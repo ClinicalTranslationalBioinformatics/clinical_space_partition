@@ -1,0 +1,20 @@
+
+CLINICAL SPACE PARTITION
+------------------------
+
+Parameters considered: sensitivity, specificity and coverage
+
+Methods compared: PolyPhen-2, SIFT, CADD, MutPred, VEST, fathmm
+
+Best combination of methods (rho=0.5): VEST, CADD, MutPred
+
+List of clinical space fraction for each predictor:
+
+Predictor 	Absolute value	Relative value
+--------- 	--------------	--------------
+VEST      	0.362		0.724
+CADD      	0.104		0.208
+MutPred   	0.034		0.068
+PolyPhen-2	0		0
+SIFT      	0		0
+fathmm    	0		0
