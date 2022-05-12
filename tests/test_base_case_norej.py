@@ -1,12 +1,12 @@
 import pytest
 
-from csp import csp_noco, obtain_predictor_intervals
+from csp import csp_norej, obtain_predictor_intervals
 
 
 @pytest.fixture
 def base_case():
     return {
-        'filename': '../demo/csp-noco.config',
+        'filename': '../demo/csp-norej.config',
         'rho': 0.5,
         'predictors': {
             'CADD': [0.995, 0.254],
@@ -64,13 +64,13 @@ fathmm    	0
 
 
 def test_parse_config(base_case):
-    rho, predictors = csp_noco.parse_config(base_case['filename'], mode='noco')
+    rho, predictors = csp_norej.parse_config(base_case['filename'], mode='norej')
     assert rho == base_case['rho']
     assert predictors == base_case['predictors']
 
 
 def test_main(base_case, capsys):
-    csp_noco.main(base_case['rho'], base_case['predictors'])
+    csp_norej.main(base_case['rho'], base_case['predictors'])
     captured = capsys.readouterr()
     assert captured.out == base_case['output']
 

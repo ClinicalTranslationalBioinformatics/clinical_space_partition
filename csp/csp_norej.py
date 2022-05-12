@@ -2,7 +2,7 @@
 Cost space partition without coverage
 """
 
-from csp_co import parse_args, parse_config, print_float
+from csp_rej import parse_args, parse_config, print_float
 from obtain_predictor_intervals import get_predictors_intersections, get_interval_best_predictor, merge_intervals
 
 
@@ -42,7 +42,7 @@ def main(rho, predictors):
 
 if __name__ == '__main__':
     # Parse predictors and rho
-    user_rho, user_predictors = parse_config(parse_args(), mode='noco')
+    user_rho, user_predictors = parse_config(parse_args(), mode='norej')
 
     # Execute CSP without coverage
     main(user_rho, user_predictors)

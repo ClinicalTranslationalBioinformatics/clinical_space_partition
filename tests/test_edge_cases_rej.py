@@ -1,4 +1,4 @@
-from csp import csp_co, find_predictor_intersections, search_graph_polygons
+from csp import csp_rej, find_predictor_intersections, search_graph_polygons
 
 
 def test_linear_equation_divided_zero_values():
@@ -101,7 +101,7 @@ predictor1	0.5		1
 predictor2	0		0
 predictor3	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -131,7 +131,7 @@ predictor1	0.5		1
 predictor2	0		0
 predictor3	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -161,7 +161,7 @@ MetaLR        	0.497		0.993
 CADD          	0.003		0.007
 MutationTaster	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -268,7 +268,7 @@ SIFT      	0		0
 PolyPhen-2	0		0
 fathmm    	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -306,7 +306,7 @@ MetaLR        	0		0
 PolyPhen-2    	0		0
 SIFT          	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -338,7 +338,7 @@ predictor1	0		0
 predictor4	0		0
 predictor2	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -374,7 +374,7 @@ predictor1	0		0
 predictor5	0		0
 predictor6	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -410,7 +410,7 @@ predictor5	0.013		0.026
 predictor1	0		0
 predictor3	0		0
 '''
-    csp_co.main(rho, predictors)
+    csp_rej.main(rho, predictors)
     captured = capsys.readouterr()
     assert captured.out == output
 
@@ -472,5 +472,5 @@ def test_sympy_lin_solve():
             (0.999743205223091, 0.000228968026121)
         ]
     ]
-    polygons = csp_co.predictors_2_polygons(rho, predictors, 10)
+    polygons = csp_rej.predictors_2_polygons(rho, predictors, 10)
     assert polygons == expected_polygons

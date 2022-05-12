@@ -41,12 +41,12 @@ def parse_config(filename, mode):
 
     if len(predictors) == 0:
         sys.exit('The predictor(s) are missing')
-    if mode == 'co':
+    if mode == 'rej':
         info = ['sensitivity', 'specificity', 'coverage']
-    elif mode == 'noco':
+    elif mode == 'norej':
         info = ['sensitivity', 'specificity']
     else:
-        raise Exception('ERROR: config mode unknown')
+        raise Exception(f'ERROR: config mode {mode} unknown')
     for predictor, values in predictors.items():
         values = values.replace(' ', '').split(',')
         if len(values) != len(info):
@@ -126,7 +126,7 @@ def main(rho, predictors):
 
 if __name__ == '__main__':
     # Parse predictors and rho
-    user_rho, user_predictors = parse_config(parse_args(), mode='co')
+    user_rho, user_predictors = parse_config(parse_args(), mode='rej')
 
     # Execute CSP coverage
     main(user_rho, user_predictors)

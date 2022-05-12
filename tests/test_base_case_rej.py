@@ -1,13 +1,13 @@
 import pytest
 
-from csp import csp_co, find_predictor_intersections, build_intersection_graph, search_graph_polygons, \
+from csp import csp_rej, find_predictor_intersections, build_intersection_graph, search_graph_polygons, \
     obtain_polygon_data
 
 
 @pytest.fixture
 def base_case():
     return {
-        'filename': '../demo/csp-co.config',
+        'filename': '../demo/csp-rej.config',
         'rho': 0.5,
         'predictors_demo': {
             'CADD': [0.995, 0.254, 1.0],
@@ -394,13 +394,13 @@ PolyPhen-2	0.114		0.228
 
 
 def test_parse_config(base_case):
-    rho, predictors = csp_co.parse_config(base_case['filename'], mode='co')
+    rho, predictors = csp_rej.parse_config(base_case['filename'], mode='rej')
     assert rho == base_case['rho']
     assert predictors == base_case['predictors_demo']
 
 
 def test_main(base_case, capsys):
-    csp_co.main(base_case['rho'], base_case['predictors'])
+    csp_rej.main(base_case['rho'], base_case['predictors'])
     captured = capsys.readouterr()
     assert captured.out == base_case['output']
 
